@@ -1,0 +1,21 @@
+# docker exec -it idContainer  /bin/bash
+# mysql -uuser -ppassword
+# si ça  marche pas tu fais ça
+# CREATE USER 'YourPassWord'@'localhost' IDENTIFIED BY 'YourLogin';
+
+# to execute sql script
+#docker exec -i idContainer  mysql -uyouLogin -pyouPasswor  <youScript.sql   
+version: '3.7'
+services:
+  db_mysql:
+    image: mysql:8.0
+    volumes:
+      - "/tmp/my_dbdata_mysql:/var/lib/mysql"
+    restart: always
+    ports:
+      - 3306:3306
+    environment:   
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mysqldb
+      MYSQL_USER: db
+      MYSQL_PASSWORD: db
